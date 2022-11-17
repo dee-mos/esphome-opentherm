@@ -168,6 +168,18 @@ binary_sensor:
     max_ch_setpoint_rw:
       name: "Boiler CH maximum setpoint read/write"
 
+    service_required:
+      name: "Boiler service required"
+    lockout_reset:
+      name: "Boiler lockout reset"
+    low_water_pressure:
+      name: "Boiler low water pressure"
+    gas_fault:
+      name: "Boiler gas fault"
+    air_fault:
+      name: "Boiler air fault"
+    water_overtemp:
+      name: "Boiler water overtemp"
 switch:
   - platform: opentherm
     ch_enable:
@@ -183,20 +195,35 @@ switch:
     ch2_active:
       name: "Boiler Central Heating 2 active"
 
+  - platform: template
+    name: "PID Climate Autotune"
+    turn_on_action:
+      - climate.pid.autotune: pid_climate
+
+  - platform: template
+    name: "PID Circuit Autotune"
+    turn_on_action:
+      - climate.pid.autotune: pid_circuit
+
 climate:
   - platform: pid
+    id: pid_climate
     name: "Central heating"
     heat_output: t_set
     default_target_temperature: 20
     sensor: ch_room_temperature
     control_parameters: 
-      kp: 0.7
-      ki: 0.003
+      kp: 0.0
+      ki: 0.0
+      kd: 0.0
+
   - platform: pid
+    id: pid_circuit
     name: "Central heating (Circuit 2)"
     heat_output: t_set_ch2
     default_target_temperature: 18
     sensor: ch2_room_temperature
     control_parameters: 
-      kp: 0.4
-      ki: 0.004
+      kp: 0.0
+      ki: 0.0
+      kd: 0.0
