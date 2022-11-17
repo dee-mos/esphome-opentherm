@@ -427,6 +427,45 @@ BINARY_SENSORS: Schema = Schema({
         "keep_updated": False,
         "message_data": "flag8_lb_1",
     }),
+"service_required": BinarySensorSchema({
+        "description": "Remote boiler parameters: CH maximum setpoint read/write",
+        "message": "ASFflags",
+        "keep_updated": False,
+        "message_data": "flag8_lb_0",
+    }),
+
+ "lockout_reset": BinarySensorSchema({
+        "description": "Remote boiler parameters: CH maximum setpoint read/write",
+        "message": "ASFflags",
+        "keep_updated": False,
+        "message_data": "flag8_lb_1",
+    }),   
+ "low_water_pressure": BinarySensorSchema({
+        "description": "Remote boiler parameters: CH maximum setpoint read/write",
+        "message": "ASFflags",
+        "keep_updated": False,
+        "message_data": "flag8_lb_2",
+    }),   
+
+ "gas_fault": BinarySensorSchema({
+        "description": "Remote boiler parameters: CH maximum setpoint read/write",
+        "message": "ASFflags",
+        "keep_updated": False,
+        "message_data": "flag8_lb_3",
+    }),   
+ "air_fault": BinarySensorSchema({
+        "description": "Remote boiler parameters: CH maximum setpoint read/write",
+        "message": "ASFflags",
+        "keep_updated": False,
+        "message_data": "flag8_lb_4",
+    }),  
+ "water_overtemp": BinarySensorSchema({
+        "description": "Remote boiler parameters: CH maximum setpoint read/write",
+        "message": "ASFflags",
+        "keep_updated": False,
+        "message_data": "flag8_lb_5",
+    }), 
+
 })
 
 class SwitchSchema(EntitySchema):
