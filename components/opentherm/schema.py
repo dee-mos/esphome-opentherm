@@ -427,40 +427,38 @@ BINARY_SENSORS: Schema = Schema({
         "keep_updated": False,
         "message_data": "flag8_lb_1",
     }),
-"service_required": BinarySensorSchema({
-        "description": "Remote boiler parameters: service required",
+    "service_required": BinarySensorSchema({
+        "description": "Remote boiler parameters: service required read",
         "message": "ASFflags",
         "keep_updated": False,
         "message_data": "flag8_lb_0",
     }),
-
- "lockout_reset": BinarySensorSchema({
-        "description": "Remote boiler parameters: lockout reset",
+    "lockout_reset": BinarySensorSchema({
+        "description": "Remote boiler parameters: lockout reset read",
         "message": "ASFflags",
         "keep_updated": False,
         "message_data": "flag8_lb_1",
     }),   
- "low_water_pressure": BinarySensorSchema({
-        "description": "Remote boiler parameters: low water pressure",
+    "low_water_pressure": BinarySensorSchema({
+        "description": "Remote boiler parameters: low water pressure read",
         "message": "ASFflags",
         "keep_updated": False,
         "message_data": "flag8_lb_2",
     }),   
-
- "gas_fault": BinarySensorSchema({
-        "description": "Remote boiler parameters: gas fault",
+    "gas_fault": BinarySensorSchema({
+        "description": "Remote boiler parameters: gas fault read",
         "message": "ASFflags",
         "keep_updated": False,
         "message_data": "flag8_lb_3",
     }),   
- "air_fault": BinarySensorSchema({
-        "description": "Remote boiler parameters: air fault",
+    "air_fault": BinarySensorSchema({
+        "description": "Remote boiler parameters: air fault read",
         "message": "ASFflags",
         "keep_updated": False,
         "message_data": "flag8_lb_4",
     }),  
- "water_overtemp": BinarySensorSchema({
-        "description": "Remote boiler parameters: water overtemp",
+    "water_overtemp": BinarySensorSchema({
+        "description": "Remote boiler parameters: water overtemp read",
         "message": "ASFflags",
         "keep_updated": False,
         "message_data": "flag8_lb_5",
