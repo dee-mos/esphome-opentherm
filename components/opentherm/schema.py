@@ -1,4 +1,4 @@
-# This file contains a schema for all supported sensors, binary sensors and
+ This file contains a schema for all supported sensors, binary sensors and
 # inputs of the OpenTherm component.
 
 from typing import Dict, Generic, Tuple, TypeVar, TypedDict
@@ -12,6 +12,7 @@ from esphome.const import (
     DEVICE_CLASS_PRESSURE,
     DEVICE_CLASS_PROBLEM,
     DEVICE_CLASS_TEMPERATURE,
+    STATE_CLASS_NONE,
     STATE_CLASS_MEASUREMENT,
     STATE_CLASS_TOTAL_INCREASING,
 )
@@ -307,6 +308,15 @@ SENSORS: Schema[SensorSchema] = Schema({
         "keep_updated": True,
         "message_data": "f88",
     }),
+    "fault_code": SensorSchema({
+        "description": "Fault code",
+        "accuracy_decimals": 0,
+        "icon": "mdi:water-boiler-alert",
+        "state_class": STATE_CLASS_MEASUREMENT,
+        "message": "ASFflags",
+        "keep_updated": True,
+        "message_data": "u8_lb",
+    }),
 })
 
 class BinarySensorSchema(EntitySchema):
@@ -428,36 +438,50 @@ BINARY_SENSORS: Schema = Schema({
         "message_data": "flag8_lb_1",
     }),
     "service_required": BinarySensorSchema({
+        "device_class": DEVICE_CLASS_PROBLEM,
+        "icon": "mdi:account-wrench-outline",
         "description": "Remote boiler parameters: service required read",
         "message": "ASFflags",
         "keep_updated": False,
         "message_data": "flag8_lb_0",
     }),
+
     "lockout_reset": BinarySensorSchema({
+        "device_class": DEVICE_CLASS_PROBLEM,
+        "icon": "mdi:lock-reset",
         "description": "Remote boiler parameters: lockout reset read",
         "message": "ASFflags",
         "keep_updated": False,
         "message_data": "flag8_lb_1",
     }),   
     "low_water_pressure": BinarySensorSchema({
+        "device_class": DEVICE_CLASS_PROBLEM,
         "description": "Remote boiler parameters: low water pressure read",
         "message": "ASFflags",
+        "icon": "mdi:water-alert",
         "keep_updated": False,
         "message_data": "flag8_lb_2",
     }),   
+
     "gas_fault": BinarySensorSchema({
+        "device_class": DEVICE_CLASS_PROBLEM,
         "description": "Remote boiler parameters: gas fault read",
         "message": "ASFflags",
+        "icon": "mdi:fire-alert",
         "keep_updated": False,
         "message_data": "flag8_lb_3",
     }),   
     "air_fault": BinarySensorSchema({
+        "device_class": DEVICE_CLASS_PROBLEM,
+        "icon": "mdi:weather-cloudy-alert",
         "description": "Remote boiler parameters: air fault read",
         "message": "ASFflags",
         "keep_updated": False,
         "message_data": "flag8_lb_4",
     }),  
     "water_overtemp": BinarySensorSchema({
+        "device_class": DEVICE_CLASS_PROBLEM,
+        "icon": "mdi:water-thermometer",
         "description": "Remote boiler parameters: water overtemp read",
         "message": "ASFflags",
         "keep_updated": False,
