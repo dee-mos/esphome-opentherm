@@ -136,7 +136,7 @@ unsigned int OpenthermHub::build_request(OpenThermMessageID request_id) {
                 true
             #endif
             ;
-        return ot->buildSetBoilerStatusRequest(ch_enable, dhw_enable, cooling_enable, otc_active, ch2_active);
+        return ot->buildSetBoilerStatusRequest(ch_enable, dhw_enable, cooling_enable, otc_active, /*ch2_active*/true);
     }
 
     // Next, we start with the write requests from switches and other inputs,
