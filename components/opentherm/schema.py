@@ -1,7 +1,8 @@
 # This file contains a schema for all supported sensors, binary sensors and
 # inputs of the OpenTherm component.
 
-from typing import Dict, Generic, Tuple, TypeVar, TypedDict, NotRequired
+from typing import Dict, Generic, Tuple, TypeVar, TypedDict
+from typing_extensions import NotRequired
 
 from esphome.const import (
     UNIT_CELSIUS,
