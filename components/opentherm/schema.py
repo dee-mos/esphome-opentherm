@@ -1,8 +1,7 @@
 # This file contains a schema for all supported sensors, binary sensors and
 # inputs of the OpenTherm component.
 
-from typing import Dict, Generic, Tuple, TypeVar, TypedDict
-from typing_extensions import NotRequired
+from typing import Dict, Generic, Tuple, TypeVar, TypedDict, NotRequired
 
 from esphome.const import (
     UNIT_CELSIUS,
@@ -537,6 +536,7 @@ class AutoConfigure(TypedDict):
 
 class InputSchema(EntitySchema):
     unit_of_measurement: str
+    step: float
     range: Tuple[int, int]
     auto_max_value: NotRequired[AutoConfigure]
     auto_min_value: NotRequired[AutoConfigure]
@@ -545,6 +545,7 @@ INPUTS: Schema[InputSchema] = Schema({
     "t_set": InputSchema({
         "description": "Control setpoint: temperature setpoint for the boiler's supply water",
         "unit_of_measurement": UNIT_CELSIUS,
+        "step": 0.1,
         "message": "TSet",
         "keep_updated": True,
         "message_data": "f88",
@@ -554,6 +555,7 @@ INPUTS: Schema[InputSchema] = Schema({
     "t_set_ch2": InputSchema({
         "description": "Control setpoint 2: temperature setpoint for the boiler's supply water on the second heating circuit",
         "unit_of_measurement": UNIT_CELSIUS,
+        "step": 0.1,
         "message": "TsetCH2",
         "keep_updated": True,
         "message_data": "f88",
@@ -563,6 +565,7 @@ INPUTS: Schema[InputSchema] = Schema({
     "cooling_control": InputSchema({
         "description": "Cooling control signal",
         "unit_of_measurement": UNIT_PERCENT,
+        "step": 1.0,
         "message": "CoolingControl",
         "keep_updated": True,
         "message_data": "f88",
@@ -571,6 +574,7 @@ INPUTS: Schema[InputSchema] = Schema({
     "t_dhw_set": InputSchema({
         "description": "Domestic hot water temperature setpoint",
         "unit_of_measurement": UNIT_CELSIUS,
+        "step": 0.1,
         "message": "TdhwSet",
         "keep_updated": True,
         "message_data": "f88",
@@ -581,6 +585,7 @@ INPUTS: Schema[InputSchema] = Schema({
     "max_t_set": InputSchema({
         "description": "Maximum allowable CH water setpoint",
         "unit_of_measurement": UNIT_CELSIUS,
+        "step": 0.1,
         "message": "MaxTSet",
         "keep_updated": True,
         "message_data": "f88",
@@ -591,6 +596,7 @@ INPUTS: Schema[InputSchema] = Schema({
     "t_room_set": InputSchema({
         "description": "Current room temperature setpoint (informational)",
         "unit_of_measurement": UNIT_CELSIUS,
+        "step": 0.1,
         "message": "TrSet",
         "keep_updated": True,
         "message_data": "f88",
@@ -599,6 +605,7 @@ INPUTS: Schema[InputSchema] = Schema({
     "t_room_set_ch2": InputSchema({
         "description": "Current room temperature setpoint on CH2 (informational)",
         "unit_of_measurement": UNIT_CELSIUS,
+        "step": 0.1,
         "message": "TrSetCH2",
         "keep_updated": True,
         "message_data": "f88",
@@ -607,6 +614,7 @@ INPUTS: Schema[InputSchema] = Schema({
     "t_room": InputSchema({
         "description": "Current sensed room temperature (informational)",
         "unit_of_measurement": UNIT_CELSIUS,
+        "step": 0.1,
         "message": "Tr",
         "keep_updated": True,
         "message_data": "f88",
